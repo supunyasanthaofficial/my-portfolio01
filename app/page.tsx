@@ -3,12 +3,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 
-
 import sukuna from "../images/sukuna.jpg";
-import P1 from "../images/P1.jpg"
-import P2 from "../images/P2.jpg"
-import P3 from "../images/P3.jpg"
-import P4 from "../images/P4.jpg"
+import P1 from "../images/P1.jpg";
+import P2 from "../images/P2.jpg";
+import P3 from "../images/P3.jpg";
+import P4 from "../images/P4.jpg";
 
 import Navbar from "@/components/Navbar";
 import ProjectCard from "@/components/ProjectCard";
@@ -48,7 +47,7 @@ export default function Home() {
             Supun <br /> Yasantha
           </h1>
           <p className="text-lg md:text-xl font-light tracking-[0.4em] text-gray-400 mt-6 uppercase">
-            Mobile • Web • Video
+            Mobile • Web
           </p>
         </motion.div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse" />
@@ -77,7 +76,7 @@ export default function Home() {
 
             <div className="flex flex-col">
               <h2 className="text-sm font-mono uppercase tracking-widest text-blue-600 mb-8">
-                 About Me
+                About Me
               </h2>
               <p className="text-3xl md:text-5xl font-medium leading-tight tracking-tight">
                 I am a{" "}
@@ -112,7 +111,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-        <Skills/>
+      <Skills />
       <section ref={scrollRef} className="relative h-[400vh] bg-neutral-950">
         <div className="sticky top-0 h-screen flex items-center overflow-hidden">
           <motion.div style={{ x }} className="flex gap-8 px-8 md:px-20">
@@ -125,26 +124,10 @@ export default function Home() {
               </p>
             </div>
 
-            <ProjectCard
-              title="Mobile App"
-              category="Flutter"
-              image={P1}
-            />
-            <ProjectCard
-              title="Web Platform"
-              category="Next.js"
-              image={P2}
-            />
-            <ProjectCard
-              title="Cinema Reel"
-              category="Editing"
-              image={P3}
-            />
-            <ProjectCard
-              title="UI Concept"
-              category="Design"
-              image={P4}
-            />
+            <ProjectCard title="Mobile App" category="Flutter" image={P1} />
+            <ProjectCard title="Web Platform" category="Next.js" image={P2} />
+            <ProjectCard title="Cinema Reel" category="Editing" image={P3} />
+            <ProjectCard title="UI Concept" category="Design" image={P4} />
           </motion.div>
         </div>
       </section>
@@ -166,8 +149,8 @@ export default function Home() {
           </a>
         </motion.div>
       </section>
-      <ContactForm/>
-      <Footer/>
+      <ContactForm />
+      <Footer />
     </main>
   );
 }
