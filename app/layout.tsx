@@ -8,8 +8,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
-      <CustomCursor />
+      <body>
+        <CustomCursor /> 
+        {children}
+      </body>
     </html>
   );
 }
