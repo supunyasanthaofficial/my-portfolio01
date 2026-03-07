@@ -88,24 +88,7 @@ export default function Home() {
                   I blend technical precision with creative storytelling in
                   mobile and web apps.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 border-t border-gray-200">
-                  <div>
-                    <span className="text-xs uppercase text-gray-400 block mb-2">
-                      Skills
-                    </span>
-                    <p className="font-medium text-sm md:text-base">
-                      React Native, Flutter, Next.js, DaVinci
-                    </p>
-                  </div>
-                  <div>
-                    <span className="text-xs uppercase text-gray-400 block mb-2">
-                      Focus
-                    </span>
-                    <p className="font-medium text-sm md:text-base">
-                      UX & Performance
-                    </p>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </motion.div>
