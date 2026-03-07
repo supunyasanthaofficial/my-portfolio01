@@ -21,9 +21,7 @@ export default function Navbar() {
            <a href="#" className="hover:text-blue-400 transition">
             Projects
           </a>
-          <a href="#" className="hover:text-blue-400 transition">
-            Editing
-          </a>
+          
           <a href="#" className="hover:text-blue-400 transition">
             Contact
           </a>
