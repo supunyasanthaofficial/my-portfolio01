@@ -6,10 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "install": "npm install --legacy-peer-deps"
   },
   "dependencies": {
-    "@dotlottie/react-player": "^1.6.19",
     "clsx": "^2.1.1",
     "framer-motion": "^12.35.0",
     "lottie-react": "^2.4.1",
