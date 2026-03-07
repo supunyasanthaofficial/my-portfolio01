@@ -1,3 +1,4 @@
+
 import "./globals.css";
 import CustomCursor from "@/components/Cursor";
 
@@ -10,6 +11,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CustomCursor /> 
+      
         {children}
       </body>
     </html>
