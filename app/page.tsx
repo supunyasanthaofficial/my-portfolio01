@@ -14,6 +14,7 @@ import Navbar from "@/components/Navbar";
 import ProjectCard from "@/components/ProjectCard";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
+import Skills from "@/components/Skills";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -111,7 +112,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
+        <Skills/>
       <section ref={scrollRef} className="relative h-[400vh] bg-neutral-950">
         <div className="sticky top-0 h-screen flex items-center overflow-hidden">
           <motion.div style={{ x }} className="flex gap-8 px-8 md:px-20">
