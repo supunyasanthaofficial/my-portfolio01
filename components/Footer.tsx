@@ -62,7 +62,7 @@ export default function Footer() {
         <div className="mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 font-mono text-xs">
           <p>© {currentYear} SUPUN YASANTHA. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-8">
-            <p>DESIGNED & BUILT BY SUPUN</p>
+            <p>DESIGNED & BUILT BY SUPUN Y</p>
             <p className="hidden md:block">LOCATED IN SRI LANKA, KANDY</p>
           </div>
         </div>
