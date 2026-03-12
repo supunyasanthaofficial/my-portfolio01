@@ -1,4 +1,4 @@
-
+import { ThemeProvider } from "@/provider/ThemeProvider";
 import "./globals.css";
 import CustomCursor from "@/components/Cursor";
 
@@ -10,9 +10,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <CustomCursor /> 
-      
-        {children}
+        <ThemeProvider>
+          <CustomCursor />
+
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
