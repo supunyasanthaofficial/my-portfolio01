@@ -14,6 +14,7 @@ import ProjectCard from "@/components/ProjectCard";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import Skills from "@/components/Skills";
+import GithubGraph from "@/components/GithubGraph";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -132,6 +133,7 @@ export default function Home() {
           </a>
         </motion.div>
       </section>
+      <GithubGraph/>
       <ContactForm />
       <Footer />
     </main>
