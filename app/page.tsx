@@ -2,10 +2,11 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 import sukuna from "../images/sukuna.jpg";
 import P1 from "../images/P1.jpg";
-import P2 from "../images/P2.jpg";
+import P2 from "../images/P2.jpg";    
 import P3 from "../images/P3.jpg";
 import P4 from "../images/P4.jpg";
 
@@ -14,7 +15,11 @@ import ProjectCard from "@/components/ProjectCard";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import Skills from "@/components/Skills";
-import GithubGraph from "@/components/GithubGraph";
+const GithubGraph = dynamic(() => import('@/components/GithubGraph'), { 
+  ssr: false, 
+  loading: () => <div className="h-40 w-full animate-pulse bg-zinc-800 rounded-3xl" /> 
+});
+import DevStory from "@/components/DevStory";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -95,6 +100,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      <DevStory/>
       <Skills />
       <section ref={scrollRef} className="relative h-[400vh] bg-neutral-950">
         <div className="sticky top-0 h-screen flex items-center overflow-hidden">
