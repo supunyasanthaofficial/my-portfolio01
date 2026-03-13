@@ -5,10 +5,12 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 
 import sukuna from "../images/sukuna.jpg";
-import P1 from "../images/P1.jpg";
+// import P1 from "../images/P1.jpg";
 import P2 from "../images/P2.jpg";    
-import P3 from "../images/P3.jpg";
+// import P3 from "../images/P3.jpg";
 import P4 from "../images/P4.jpg";
+import Bigger2 from "../images/Bigger2.png"
+import A2 from "../images/A2.png"
 
 import Navbar from "@/components/Navbar";
 import ProjectCard from "@/components/ProjectCard";
@@ -114,10 +116,10 @@ export default function Home() {
               </p>
             </div>
 
-            <ProjectCard title="Mobile App" category="Flutter" image={P1} />
-            <ProjectCard title="Web Platform" category="Next.js" image={P2} />
-            <ProjectCard title="Cinema Reel" category="Editing" image={P3} />
-            <ProjectCard title="UI Concept" category="Design" image={P4} />
+            <ProjectCard title="Auroo Mobile App" category="Flutter" image={A2} />
+            <ProjectCard title="Portfolio" category="Next.js" image={P2} />
+            <ProjectCard title="Bigger2" category="Flutter" image={Bigger2} />
+            <ProjectCard title="Diferencia Globle" category="React" image={P4} />
           </motion.div>
         </div>
       </section>
