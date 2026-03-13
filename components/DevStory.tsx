@@ -14,13 +14,13 @@ const storyData = [
     year: "2024",
     title: "Diving into React",
     description:
-      "Learned React and Next.js. Built several projects like 'Eco_Tracker' and computer vision apps.",
+      "Learned React and Next.js. Built several projects like 'Polygon_Area_Calculator' and computer vision apps.",
   },
   {
     year: "2025",
     title: "Professional Milestones",
     description:
-      "Started working on complex Admin Panels (Supabase) and vocational academy websites.",
+      "Started working on complex Admin Panels (Supabase).",
   },
   {
     year: "2026",
