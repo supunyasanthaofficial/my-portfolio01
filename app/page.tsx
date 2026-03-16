@@ -6,23 +6,26 @@ import dynamic from "next/dynamic";
 
 import sukuna from "../images/sukuna.jpg";
 // import P1 from "../images/P1.jpg";
-import P2 from "../images/P2.jpg";    
+import P2 from "../images/P2.jpg";
 // import P3 from "../images/P3.jpg";
 import P4 from "../images/P4.jpg";
-import Bigger2 from "../images/Bigger2.png"
-import A2 from "../images/A2.png"
+import Bigger2 from "../images/Bigger2.png";
+import A2 from "../images/A2.png";
 
 import Navbar from "@/components/Navbar";
 import ProjectCard from "@/components/ProjectCard";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import Skills from "@/components/Skills";
-const GithubGraph = dynamic(() => import('@/components/GithubGraph'), { 
-  ssr: false, 
-  loading: () => <div className="h-40 w-full animate-pulse bg-zinc-800 rounded-3xl" /> 
+const GithubGraph = dynamic(() => import("@/components/GithubGraph"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-40 w-full animate-pulse bg-zinc-800 rounded-3xl" />
+  ),
 });
 import DevStory from "@/components/DevStory";
 import AdaptiveGreeting from "@/components/AdaptiveGreeting";
+import MagneticCard from "@/components/MagneticCard";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -61,7 +64,7 @@ export default function Home() {
         </motion.div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse" />
       </section>
-        <AdaptiveGreeting/>
+      <AdaptiveGreeting />
       <section className="relative z-20 min-h-screen bg-white text-black rounded-t-[50px] px-8 py-32 flex flex-col items-center justify-center">
         <div className="max-w-7xl w-full">
           <motion.div
@@ -97,13 +100,12 @@ export default function Home() {
                   I blend technical precision with creative storytelling in
                   mobile and web apps.
                 </p>
-                
               </div>
             </div>
           </motion.div>
         </div>
       </section>
-      <DevStory/>
+      <DevStory />
       <Skills />
       <section ref={scrollRef} className="relative h-[400vh] bg-neutral-950">
         <div className="sticky top-0 h-screen flex items-center overflow-hidden">
@@ -117,10 +119,29 @@ export default function Home() {
               </p>
             </div>
 
-            <ProjectCard title="Auroo Mobile App" category="Flutter" image={A2} />
-            <ProjectCard title="Portfolio" category="Next.js" image={P2} />
-            <ProjectCard title="Bigger2" category="Flutter" image={Bigger2} />
-            <ProjectCard title="Diferencia Globle" category="React" image={P4} />
+            <MagneticCard>
+              <ProjectCard
+                title="Auroo Mobile App"
+                category="Flutter"
+                image={A2}
+              />
+            </MagneticCard>
+
+            <MagneticCard>
+              <ProjectCard title="Portfolio" category="Next.js" image={P2} />
+            </MagneticCard>
+
+            <MagneticCard>
+              <ProjectCard title="Bigger2" category="Flutter" image={Bigger2} />
+            </MagneticCard>
+
+            <MagneticCard>
+              <ProjectCard
+                title="Diferencia Globle"
+                category="React"
+                image={P4}
+              />
+            </MagneticCard>
           </motion.div>
         </div>
       </section>
@@ -142,7 +163,7 @@ export default function Home() {
           </a>
         </motion.div>
       </section>
-      <GithubGraph/>
+      <GithubGraph />
       <ContactForm />
       <Footer />
     </main>
