@@ -26,6 +26,9 @@ const GithubGraph = dynamic(() => import("@/components/GithubGraph"), {
 import DevStory from "@/components/DevStory";
 import AdaptiveGreeting from "@/components/AdaptiveGreeting";
 import MagneticCard from "@/components/MagneticCard";
+import SpotlightCursor from "@/components/SpotLight";
+import GlitchButton from "@/components/GlitchButton";
+import FilmIndicator from "@/components/FilmIndicator";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -49,7 +52,8 @@ export default function Home() {
   return (
     <main ref={containerRef} className="relative bg-black text-white">
       <Navbar />
-
+      <SpotlightCursor />
+      <FilmIndicator/>
       <section className="relative h-screen flex items-center justify-center overflow-hidden sticky top-0">
         <motion.div
           style={{ y: textY, opacity: textOpacity, scale: heroScale }}
@@ -146,21 +150,27 @@ export default function Home() {
         </div>
       </section>
 
+    
       <section className="h-screen bg-black flex flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="text-center"
         >
-          <h2 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase">
+          <h2 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase mb-12">
             Lets create <br /> something.
           </h2>
-          <a
-            href="mailto:your-email@gmail.com"
-            className="mt-12 inline-block text-blue-500 text-xl md:text-2xl font-mono hover:scale-110 transition-transform underline"
-          >
+          
+        
+          <div className="flex justify-center">
+             <a href="mailto:supun.yasantha@work.com">
+                <GlitchButton text="Start a Project" />
+             </a>
+          </div>
+          
+          <p className="mt-8 text-gray-500 font-mono text-sm uppercase tracking-widest">
             supun.yasantha@work.com
-          </a>
+          </p>
         </motion.div>
       </section>
       <GithubGraph />
