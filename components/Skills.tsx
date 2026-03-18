@@ -1,6 +1,6 @@
-'use client';
-import { motion } from 'framer-motion';
-
+"use client";
+import { motion } from "framer-motion";
+// Skilss
 const skills = [
   { name: "React Native", category: "Mobile", level: "90%" },
   { name: "Flutter", category: "Mobile", level: "85%" },
@@ -18,7 +18,9 @@ export default function Skills() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
           <div>
-            <h2 className="text-sm font-mono uppercase tracking-[0.4em] text-blue-600 mb-4">Expertise</h2>
+            <h2 className="text-sm font-mono uppercase tracking-[0.4em] text-blue-600 mb-4">
+              Expertise
+            </h2>
             <h3 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase italic leading-none">
               My <span className="text-blue-600">Tech</span> Stack
             </h3>
@@ -43,17 +45,18 @@ export default function Skills() {
                 {skill.category}
               </span>
               <h4 className="text-xl font-bold mb-6">{skill.name}</h4>
-              
-          
+
               <div className="h-[2px] w-full bg-gray-100 relative overflow-hidden">
-                <motion.div 
+                <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: skill.level }}
                   transition={{ duration: 1, delay: 0.5 }}
                   className="absolute h-full bg-blue-600 left-0"
                 />
               </div>
-              <span className="text-[10px] font-mono mt-2 block text-right text-gray-300 italic">{skill.level} Proficiency</span>
+              <span className="text-[10px] font-mono mt-2 block text-right text-gray-300 italic">
+                {skill.level} Proficiency
+              </span>
             </motion.div>
           ))}
         </div>
