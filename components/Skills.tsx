@@ -5,7 +5,7 @@ const skills = [
   { name: "React Native", category: "Mobile", level: "90%" },
   { name: "Flutter", category: "Mobile", level: "85%" },
   { name: "Next.js / React", category: "Web", level: "95%" },
-  { name: "Node.js", category: "Backend", level: "80%" },
+  { name: "Supabase", category: "Backend", level: "80%" },
   { name: "TypeScript", category: "Language", level: "88%" },
   { name: "DaVinci Resolve", category: "Video", level: "92%" },
   { name: "Firebase / Supabase", category: "Database", level: "85%" },
