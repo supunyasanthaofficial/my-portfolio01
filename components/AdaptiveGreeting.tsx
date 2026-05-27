@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function AdaptiveGreeting() {
+function AdaptiveGreeting() {
   const [timeData, setTimeData] = useState({
     greeting: "Hello",
     subtext: "Welcome to my portfolio",
@@ -76,3 +76,4 @@ export default function AdaptiveGreeting() {
     </div>
   );
 }
+export default AdaptiveGreeting;
