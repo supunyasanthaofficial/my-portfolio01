@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, useSpring } from "framer-motion";
 
-export default function SpotlightCursor() {
+function SpotlightCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -32,3 +32,4 @@ export default function SpotlightCursor() {
     />
   );
 }
+export default SpotlightCursor;
