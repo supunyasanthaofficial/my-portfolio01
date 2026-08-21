@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 
-export default function Footer() {
+function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -76,3 +76,4 @@ export default function Footer() {
     </footer>
   );
 }
+export default Footer;
