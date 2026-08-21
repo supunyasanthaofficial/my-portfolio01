@@ -16,7 +16,7 @@ function AdaptiveGreeting() {
 
       if (hour >= 5 && hour < 12) {
         setTimeData({
-          greeting: "Good Morning, Panda!",
+          greeting: "Good Morning!",
           subtext: "Starting the day with some fresh code.",
           themeClass: "from-orange-400 to-blue-400",
         });
