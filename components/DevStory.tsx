@@ -19,8 +19,7 @@ const storyData = [
   {
     year: "2025",
     title: "Professional Milestones",
-    description:
-      "Started working on complex Admin Panels (Supabase).",
+    description: "Started working on complex Admin Panels (Supabase).",
   },
   {
     year: "2026",
@@ -30,7 +29,7 @@ const storyData = [
   },
 ];
 
-export default function DevStory() {
+function DevStory() {
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -98,3 +97,4 @@ export default function DevStory() {
     </section>
   );
 }
+export default DevStory;
