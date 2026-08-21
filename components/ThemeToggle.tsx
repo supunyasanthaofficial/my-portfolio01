@@ -9,7 +9,7 @@ const subscribe = () => () => {};
 const getSnapshot = () => true;
 const getServerSnapshot = () => false;
 
-export default function ThemeToggle() {
+ function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
 
   const isMounted = useSyncExternalStore(
@@ -54,3 +54,4 @@ export default function ThemeToggle() {
     </motion.button>
   );
 }
+export default ThemeToggle;
