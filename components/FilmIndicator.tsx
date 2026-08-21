@@ -3,7 +3,7 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function FilmIndicator() {
+function FilmIndicator() {
   const { scrollYProgress } = useScroll();
   const [percent, setPercent] = useState(0);
 
@@ -85,3 +85,4 @@ export default function FilmIndicator() {
     </div>
   );
 }
+export default FilmIndicator;
