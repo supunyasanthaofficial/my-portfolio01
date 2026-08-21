@@ -2,17 +2,16 @@
 import { motion } from "framer-motion";
 // Skilss
 const skills = [
-  { name: "React Native", category: "Mobile", level: "90%" },
-  { name: "Flutter", category: "Mobile", level: "85%" },
-  { name: "Next.js / React", category: "Web", level: "95%" },
-  { name: "Supabase", category: "Backend", level: "80%" },
-  { name: "TypeScript", category: "Language", level: "88%" },
-  { name: "DaVinci Resolve", category: "Video", level: "92%" },
-  { name: "Firebase / Supabase", category: "Database", level: "85%" },
+  { name: "React Native", category: "Mobile", level: "60%" },
+  { name: "Flutter", category: "Mobile", level: "65%" },
+  { name: "Next.js / React", category: "Web", level: "75%" },
+  { name: "TypeScript", category: "Language", level: "68%" },
+  { name: "DaVinci Resolve", category: "Video", level: "62%" },
+  { name: "Firebase / Supabase", category: "Database", level: "65%" },
   { name: "Tailwind CSS", category: "Design", level: "95%" },
 ];
 
-export default function Skills() {
+function Skills() {
   return (
     <section className="py-32 bg-white text-black px-8">
       <div className="max-w-7xl mx-auto">
@@ -64,3 +63,4 @@ export default function Skills() {
     </section>
   );
 }
+export default Skills;
