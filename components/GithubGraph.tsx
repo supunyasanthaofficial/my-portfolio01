@@ -1,10 +1,10 @@
 "use client";
 
-import {GitHubCalendar} from "react-github-calendar";
+import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 
-export default function GithubGraph() {
+function GithubGraph() {
   const { resolvedTheme } = useTheme();
 
   const themeColors = {
@@ -48,3 +48,4 @@ export default function GithubGraph() {
     </section>
   );
 }
+export default GithubGraph;
