@@ -29,6 +29,7 @@ import MagneticCard from "@/components/MagneticCard";
 import SpotlightCursor from "@/components/SpotLight";
 import GlitchButton from "@/components/GlitchButton";
 import FilmIndicator from "@/components/FilmIndicator";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -51,6 +52,7 @@ export default function Home() {
 
   return (
     <main ref={containerRef} className="relative bg-black text-white">
+      <LoadingScreen />
       <Navbar />
       <SpotlightCursor />
       <FilmIndicator/>
@@ -69,7 +71,7 @@ export default function Home() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse" />
       </section>
       <AdaptiveGreeting />
-      <section className="relative z-20 min-h-screen bg-white text-black rounded-t-[50px] px-8 py-32 flex flex-col items-center justify-center">
+      <section id="about" className="relative z-20 min-h-screen bg-white text-black rounded-t-[50px] px-8 py-32 flex flex-col items-center justify-center">
         <div className="max-w-7xl w-full">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -111,7 +113,7 @@ export default function Home() {
       </section>
       <DevStory />
       <Skills />
-      <section ref={scrollRef} className="relative h-[400vh] bg-neutral-950">
+      <section id="projects" ref={scrollRef} className="relative h-[400vh] bg-neutral-950">
         <div className="sticky top-0 h-screen flex items-center overflow-hidden">
           <motion.div style={{ x }} className="flex gap-8 px-8 md:px-20">
             <div className="flex flex-col justify-center w-[300px] md:w-[400px] shrink-0">
@@ -174,7 +176,9 @@ export default function Home() {
         </motion.div>
       </section>
       <GithubGraph />
-      <ContactForm />
+      <div id="contact">
+        <ContactForm />
+      </div>
       <Footer />
     </main>
   );
