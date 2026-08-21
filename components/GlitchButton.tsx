@@ -3,11 +3,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-export default function GlitchButton({
-  text = "GET IN TOUCH",
-}: {
-  text?: string;
-}) {
+function GlitchButton({ text = "GET IN TOUCH" }: { text?: string }) {
   const ref = useRef<HTMLButtonElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -54,3 +50,4 @@ export default function GlitchButton({
     </div>
   );
 }
+export default GlitchButton;
