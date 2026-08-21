@@ -3,11 +3,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-export default function MagneticCard({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function MagneticCard({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -40,3 +36,4 @@ export default function MagneticCard({
     </motion.div>
   );
 }
+export default MagneticCard;
