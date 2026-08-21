@@ -1,7 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-export default function Navbar() {
+function Navbar() {
   const { scrollY } = useScroll();
 
   const opacity = useTransform(scrollY, [0, 100], [0, 1]);
@@ -18,10 +18,10 @@ export default function Navbar() {
           <a href="#" className="hover:text-blue-400 transition">
             About
           </a>
-           <a href="#" className="hover:text-blue-400 transition">
+          <a href="#" className="hover:text-blue-400 transition">
             Projects
           </a>
-          
+
           <a href="#" className="hover:text-blue-400 transition">
             Contact
           </a>
@@ -30,3 +30,4 @@ export default function Navbar() {
     </motion.nav>
   );
 }
+export default Navbar;
