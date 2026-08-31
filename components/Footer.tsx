@@ -5,7 +5,7 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-black text-white py-20 px-8 border-t border-white/5">
+    <footer className="relative bg-black text-white py-20 px-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
           <div className="flex flex-col">
@@ -27,39 +27,39 @@ function Footer() {
             </motion.h2>
           </div>
 
-          <div className="flex flex-wrap gap-8 font-mono text-sm uppercase tracking-widest">
+          <div className="flex flex-wrap gap-8 font-mono text-sm uppercase tracking-widest text-neutral-300">
             <a
               href="https://www.linkedin.com/feed/"
               target="_blank"
-              className="hover:text-blue-500 transition-colors"
+              className="hover:text-blue-400 transition-colors"
             >
               LinkedIn
             </a>
             <a
               href="https://github.com/supunyasanthaofficial"
               target="_blank"
-              className="hover:text-blue-500 transition-colors"
+              className="hover:text-blue-400 transition-colors"
             >
               GitHub
             </a>
             <a
               href="https://instagram.com"
               target="_blank"
-              className="hover:text-blue-500 transition-colors"
+              className="hover:text-blue-400 transition-colors"
             >
               Instagram
             </a>
             <a
               href="https://facebook.com"
               target="_blank"
-              className="hover:text-blue-500 transition-colors"
+              className="hover:text-blue-400 transition-colors"
             >
               Facebook
             </a>
           </div>
         </div>
 
-        <div className="mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 font-mono text-xs">
+        <div className="mt-32 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 font-mono text-xs">
           <p>© {currentYear} SUPUN YASANTHA. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-8">
             <p>DESIGNED & BUILT BY SUPUN Y</p>
