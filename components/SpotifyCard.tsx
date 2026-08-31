@@ -11,7 +11,18 @@ const FALLBACK_PLAYLIST_ID = "0i5VcMerBwRwMruNfblvWb";
 export default function SpotifyCard() {
   const presence = useLanyardWS(DISCORD_ID as `${bigint}`);
   const spotify = presence?.spotify;
-  const isLive = Boolean(presence?.listening_to_spotify && spotify);
+
+  // Filter out Spotify advertisements and check for valid song info
+  const isAd = Boolean(
+    spotify &&
+      (!spotify.track_id ||
+        spotify.song?.toLowerCase().includes("advertisement") ||
+        spotify.artist?.toLowerCase().includes("spotify"))
+  );
+
+  const isLive = Boolean(
+    presence?.listening_to_spotify && spotify && spotify.song && !isAd
+  );
 
   return (
     <motion.div
@@ -70,20 +81,24 @@ export default function SpotifyCard() {
             exit={{ opacity: 0, scale: 0.95 }}
             className="flex items-center gap-3 bg-neutral-950/60 p-3 rounded-2xl border border-neutral-800"
           >
-            {spotify.album_art_url && (
-              <div className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0 shadow-lg border border-white/10">
-                <Image
-                  src={spotify.album_art_url}
-                  alt={spotify.album || "Album Art"}
-                  fill
-                  className="object-cover"
-                  unoptimized
-                />
-                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                  <Disc3 className="w-6 h-6 text-white animate-spin" />
-                </div>
-              </div>
-            )}
+            <div className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0 shadow-lg border border-white/10 bg-neutral-800 flex items-center justify-center">
+              {spotify.album_art_url ? (
+                <>
+                  <Image
+                    src={spotify.album_art_url}
+                    alt={spotify.album || "Album Art"}
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                    <Disc3 className="w-6 h-6 text-white animate-spin" />
+                  </div>
+                </>
+              ) : (
+                <Disc3 className="w-7 h-7 text-[#1DB954] animate-spin" />
+              )}
+            </div>
 
             <div className="flex-1 min-w-0">
               <a
@@ -98,8 +113,12 @@ export default function SpotifyCard() {
               >
                 {spotify.song}
               </a>
-              <p className="text-xs text-neutral-400 font-mono truncate">{spotify.artist}</p>
-              <p className="text-[10px] text-neutral-500 font-mono truncate">{spotify.album}</p>
+              <p className="text-xs text-neutral-400 font-mono truncate">
+                {spotify.artist || "Spotify Artist"}
+              </p>
+              <p className="text-[10px] text-neutral-500 font-mono truncate">
+                {spotify.album || "Spotify Single / Album"}
+              </p>
             </div>
           </motion.div>
         ) : (
