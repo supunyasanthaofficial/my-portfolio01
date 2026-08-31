@@ -1,15 +1,14 @@
 "use client";
 
-import { useLanyardWS } from "use-lanyard";
+import { useLanyard } from "use-lanyard";
 import { motion, AnimatePresence } from "framer-motion";
 import { Music, ExternalLink, Disc3 } from "lucide-react";
 import Image from "next/image";
 
 const DISCORD_ID = process.env.NEXT_PUBLIC_DISCORD_ID || "1542099662574456913";
-const FALLBACK_PLAYLIST_ID = "0i5VcMerBwRwMruNfblvWb";
 
 export default function SpotifyCard() {
-  const presence = useLanyardWS(DISCORD_ID as `${bigint}`);
+  const { data: presence } = useLanyard(DISCORD_ID as `${bigint}`);
   const spotify = presence?.spotify;
 
   // Filter out Spotify advertisements and check for valid song info
@@ -38,7 +37,7 @@ export default function SpotifyCard() {
             <Music className="w-3.5 h-3.5 text-black" />
           </div>
           <span className="text-[11px] font-mono uppercase tracking-widest text-[#1DB954] font-bold">
-            {isLive ? "Listening on Spotify" : "My Favorite Playlist"}
+            {isLive ? "Listening on Spotify" : "Spotify • Offline"}
           </span>
         </div>
 
@@ -62,12 +61,12 @@ export default function SpotifyCard() {
           </div>
         ) : (
           <a
-            href={`https://open.spotify.com/playlist/${FALLBACK_PLAYLIST_ID}`}
+            href="https://open.spotify.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-mono text-neutral-400 hover:text-[#1DB954] flex items-center gap-1 transition-colors cursor-pointer"
           >
-            Open App <ExternalLink className="w-3 h-3" />
+            Open Spotify <ExternalLink className="w-3 h-3" />
           </a>
         )}
       </div>
@@ -105,7 +104,7 @@ export default function SpotifyCard() {
                 href={
                   spotify.track_id
                     ? `https://open.spotify.com/track/${spotify.track_id}`
-                    : `https://open.spotify.com/playlist/${FALLBACK_PLAYLIST_ID}`
+                    : "https://open.spotify.com"
                 }
                 target="_blank"
                 rel="noopener noreferrer"
@@ -122,19 +121,30 @@ export default function SpotifyCard() {
             </div>
           </motion.div>
         ) : (
-          /* Official Playlist Embed */
-          <div className="w-full rounded-2xl overflow-hidden shadow-lg border border-neutral-800/80">
-            <iframe
-              title="Spotify Embed: Recommendation Playlist"
-              src={`https://open.spotify.com/embed/playlist/${FALLBACK_PLAYLIST_ID}?utm_source=generator&theme=0`}
-              width="100%"
-              height="152"
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              className="rounded-2xl"
-            />
-          </div>
+          /* Native Clean Offline Card (No 404 iframes) */
+          <motion.div
+            key="offline-card"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="flex items-center gap-3 bg-neutral-950/60 p-3 rounded-2xl border border-neutral-800/80"
+          >
+            <div className="relative w-14 h-14 rounded-xl shrink-0 shadow-inner bg-neutral-900 border border-neutral-800 flex items-center justify-center">
+              <Disc3 className="w-7 h-7 text-neutral-600" />
+            </div>
+
+            <div className="flex-1 min-w-0">
+              <h4 className="font-semibold text-neutral-300 text-sm truncate">
+                Not Playing Right Now
+              </h4>
+              <p className="text-xs text-neutral-500 font-mono truncate">
+                Spotify is currently idle
+              </p>
+              <p className="text-[10px] text-neutral-600 font-mono truncate">
+                Will auto-update when music starts
+              </p>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </motion.div>
