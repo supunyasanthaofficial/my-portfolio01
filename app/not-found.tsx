@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
@@ -56,9 +56,12 @@ export default function NotFound() {
           </div>
         )}
 
-        <div className="mt-8">
-          <Link href="/" className="text-zinc-400 underline hover:text-white transition-colors">
-            Back to Home
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="/"
+            className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-mono text-sm tracking-wider uppercase border border-white/20 transition-all cursor-pointer flex items-center gap-2"
+          >
+            ← Return to Home (/)
           </Link>
         </div>
       </div>
