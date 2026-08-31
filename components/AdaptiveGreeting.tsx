@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import LocalTimeWeather from "@/components/LocalTimeWeather";
+import SpotifyCard from "@/components/SpotifyCard";
 
 function AdaptiveGreeting() {
   const [timeData, setTimeData] = useState({
@@ -45,7 +47,11 @@ function AdaptiveGreeting() {
   }, []);
 
   return (
-    <div className="py-10">
+    <div className="py-10 flex flex-col items-center gap-6 w-full max-w-4xl">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+        <LocalTimeWeather />
+      </div>
+      
       <AnimatePresence mode="wait">
         <motion.div
           key={timeData.greeting}
@@ -53,6 +59,7 @@ function AdaptiveGreeting() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.5 }}
+          className="text-center"
         >
           <h1 className="text-5xl md:text-7xl font-bold tracking-tighter italic uppercase">
             {timeData.greeting.split(" ").map((word, i) => (
@@ -61,7 +68,7 @@ function AdaptiveGreeting() {
                 className={
                   i === 1
                     ? `bg-linear-to-r ${timeData.themeClass} bg-clip-text text-transparent`
-                    : "dark:text-white text-black"
+                    : "text-white"
                 }
               >
                 {word}{" "}
@@ -73,6 +80,10 @@ function AdaptiveGreeting() {
           </p>
         </motion.div>
       </AnimatePresence>
+
+      <div className="w-full flex justify-center pt-2">
+        <SpotifyCard />
+      </div>
     </div>
   );
 }
