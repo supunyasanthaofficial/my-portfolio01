@@ -55,8 +55,8 @@ export default function Home() {
       <LoadingScreen />
       <Navbar />
       <SpotlightCursor />
-      <FilmIndicator/>
-      <section className="relative h-screen flex items-center justify-center overflow-hidden sticky top-0">
+      <FilmIndicator />
+      <section className="relative h-screen flex items-center justify-center overflow-hidden sticky top-0 bg-black">
         <motion.div
           style={{ y: textY, opacity: textOpacity, scale: heroScale }}
           className="text-center z-10 px-4"
@@ -70,7 +70,9 @@ export default function Home() {
         </motion.div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse" />
       </section>
-      <AdaptiveGreeting />
+      <div className="flex justify-center px-4">
+        <AdaptiveGreeting />
+      </div>
       <section id="about" className="relative z-20 min-h-screen bg-white text-black rounded-t-[50px] px-8 py-32 flex flex-col items-center justify-center">
         <div className="max-w-7xl w-full">
           <motion.div
@@ -96,7 +98,7 @@ export default function Home() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-blue-600 mb-8">
                 About Me
               </h2>
-              <p className="text-3xl md:text-5xl font-medium leading-tight tracking-tight">
+              <p className="text-3xl md:text-5xl font-medium leading-tight tracking-tight text-black">
                 I am a{" "}
                 <span className="text-blue-600">Full-stack Developer</span> and{" "}
                 <span className="italic"> Editor</span>.
@@ -153,19 +155,20 @@ export default function Home() {
       </section>
 
     
-      <section className="h-screen bg-black flex flex-col items-center justify-center">
+      <section className="relative z-20 min-h-screen bg-black text-white flex flex-col items-center justify-center py-24 px-4">
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-4xl mx-auto"
         >
           <h2 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase mb-12">
-            Lets create <br /> something.
+            Lets create <br /> <span className="text-blue-500">something.</span>
           </h2>
           
-        
           <div className="flex justify-center">
-             <a href="mailto:supun.yasantha@work.com">
+             <a href="mailto:supun.yasantha@work.com" className="cursor-pointer">
                 <GlitchButton text="Start a Project" />
              </a>
           </div>
