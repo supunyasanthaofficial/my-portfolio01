@@ -32,7 +32,7 @@ function ContactForm() {
           msg: "Something went wrong. Please try again.",
         });
       }
-    } catch (error) {
+    } catch {
       setStatus({ loading: false, msg: "Connection error. Please try again." });
     }
   };
@@ -68,13 +68,14 @@ function ContactForm() {
             </label>
             <input
               type="text"
+              suppressHydrationWarning
               placeholder="Ex: David"
               required
               value={formData.name}
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-              className="bg-transparent border-b border-gray-200 py-4 outline-none focus:border-blue-600 transition-colors text-xl font-medium"
+              className="bg-transparent border-b border-gray-200 py-4 outline-none focus:border-blue-600 transition-colors text-xl font-medium text-black placeholder:text-gray-400"
             />
           </motion.div>
 
@@ -88,13 +89,14 @@ function ContactForm() {
             </label>
             <input
               type="email"
+              suppressHydrationWarning
               placeholder="hello@work.com"
               required
               value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
-              className="bg-transparent border-b border-gray-200 py-4 outline-none focus:border-blue-600 transition-colors text-xl font-medium"
+              className="bg-transparent border-b border-gray-200 py-4 outline-none focus:border-blue-600 transition-colors text-xl font-medium text-black placeholder:text-gray-400"
             />
           </motion.div>
 
@@ -108,22 +110,24 @@ function ContactForm() {
             </label>
             <textarea
               rows={4}
+              suppressHydrationWarning
               placeholder="Ex: I need a mobile app for..."
               required
               value={formData.message}
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
               }
-              className="bg-transparent border-b border-gray-200 py-4 outline-none focus:border-blue-600 transition-colors text-xl font-medium resize-none"
+              className="bg-transparent border-b border-gray-200 py-4 outline-none focus:border-blue-600 transition-colors text-xl font-medium resize-none text-black placeholder:text-gray-400"
             />
           </motion.div>
 
           <motion.button
             type="submit"
+            suppressHydrationWarning
             disabled={status.loading}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="md:col-span-2 bg-blue-600 text-white py-6 rounded-full text-xl font-bold uppercase tracking-widest mt-12 hover:bg-blue-700 transition-colors shadow-xl shadow-blue-500/20 disabled:bg-gray-400"
+            className="md:col-span-2 bg-blue-600 text-white py-6 rounded-full text-xl font-bold uppercase tracking-widest mt-12 hover:bg-blue-700 transition-colors shadow-xl shadow-blue-500/20 disabled:bg-gray-400 cursor-pointer"
           >
             {status.loading ? "Sending..." : "Send Message"}
           </motion.button>
