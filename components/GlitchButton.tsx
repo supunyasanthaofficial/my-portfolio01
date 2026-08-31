@@ -27,6 +27,8 @@ function GlitchButton({ text = "GET IN TOUCH" }: { text?: string }) {
     <div className="relative h-24 w-64 flex items-center justify-center">
       <motion.button
         ref={ref}
+        type="button"
+        suppressHydrationWarning
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={reset}
