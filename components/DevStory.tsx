@@ -46,14 +46,14 @@ function DevStory() {
   return (
     <section
       ref={containerRef}
-      className="py-24 relative bg-white dark:bg-zinc-950"
+      className="py-24 relative bg-zinc-950 text-white"
     >
       <div className="max-w-4xl mx-auto px-8">
         <div className="mb-16">
           <h2 className="text-sm font-mono uppercase tracking-[0.4em] text-blue-600 mb-4">
             My Journey
           </h2>
-          <h3 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase italic dark:text-white text-black">
+          <h3 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase italic text-white">
             The Dev <span className="text-blue-600">Story.</span>
           </h3>
         </div>
@@ -70,22 +70,22 @@ function DevStory() {
                 key={index}
                 className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
               >
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-blue-600 rounded-full transform -translate-x-1/2 z-10 border-4 border-white dark:border-zinc-950" />
+                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-blue-600 rounded-full transform -translate-x-1/2 z-10 border-4 border-zinc-950" />
 
                 <motion.div
                   initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="w-full md:w-[45%] ml-8 md:ml-0 p-6 bg-zinc-50 dark:bg-zinc-900/50 rounded-2xl border border-zinc-200 dark:border-zinc-800"
+                  className="w-full md:w-[45%] ml-8 md:ml-0 p-6 bg-zinc-900/50 rounded-2xl border border-zinc-800"
                 >
                   <span className="text-blue-600 font-mono font-bold text-lg">
                     {item.year}
                   </span>
-                  <h4 className="text-xl font-bold mt-2 mb-3 dark:text-white">
+                  <h4 className="text-xl font-bold mt-2 mb-3 text-white">
                     {item.title}
                   </h4>
-                  <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  <p className="text-zinc-400 leading-relaxed">
                     {item.description}
                   </p>
                 </motion.div>
