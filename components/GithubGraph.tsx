@@ -9,7 +9,7 @@ function GithubGraph() {
   };
 
   return (
-    <section className="relative z-20 py-24 px-8 bg-black text-white">
+    <section className="relative z-20 py-14 md:py-16 px-6 md:px-8 bg-black text-white">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
