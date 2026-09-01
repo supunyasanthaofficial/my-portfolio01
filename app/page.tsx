@@ -148,7 +148,7 @@ export default function Home() {
       <FeaturedProjects projects={PROJECTS} />
 
     
-      <section className="relative z-20 min-h-screen bg-black text-white flex flex-col items-center justify-center py-24 px-4">
+      <section className="relative z-20 bg-black text-white flex flex-col items-center justify-center py-20 md:py-28 px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -156,7 +156,7 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-4xl mx-auto"
         >
-          <h2 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase mb-12">
+          <h2 className="text-5xl md:text-8xl font-black italic tracking-tighter uppercase mb-8 md:mb-10">
             Lets create <br /> <span className="text-blue-500">something.</span>
           </h2>
           
@@ -166,7 +166,7 @@ export default function Home() {
              </a>
           </div>
           
-          <p className="mt-8 text-gray-500 font-mono text-sm uppercase tracking-widest">
+          <p className="mt-6 text-gray-500 font-mono text-xs md:text-sm uppercase tracking-widest">
             supun.yasantha@work.com
           </p>
         </motion.div>
