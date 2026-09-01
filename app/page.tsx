@@ -23,6 +23,7 @@ const GithubGraph = dynamic(() => import("@/components/GithubGraph"), {
 });
 import DevStory from "@/components/DevStory";
 import AdaptiveGreeting from "@/components/AdaptiveGreeting";
+import CustomCursor from "@/components/Cursor";
 import SpotlightCursor from "@/components/SpotLight";
 import GlitchButton from "@/components/GlitchButton";
 import FilmIndicator from "@/components/FilmIndicator";
@@ -84,6 +85,7 @@ export default function Home() {
     <main ref={containerRef} className="relative bg-black text-white">
       <LoadingScreen />
       <Navbar />
+      <CustomCursor />
       <SpotlightCursor />
       <FilmIndicator />
       <section className="relative h-screen flex items-center justify-center overflow-hidden sticky top-0 bg-black">
