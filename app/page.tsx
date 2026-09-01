@@ -5,15 +5,13 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 
 import sukuna from "../images/sukuna.jpg";
-// import P1 from "../images/P1.jpg";
 import P2 from "../images/P2.jpg";
-// import P3 from "../images/P3.jpg";
 import P4 from "../images/P4.jpg";
 import Bigger2 from "../images/Bigger2.png";
 import A2 from "../images/A2.png";
 
 import Navbar from "@/components/Navbar";
-import ProjectCard from "@/components/ProjectCard";
+import FeaturedProjects from "@/components/FeaturedProjects";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import Skills from "@/components/Skills";
@@ -25,15 +23,53 @@ const GithubGraph = dynamic(() => import("@/components/GithubGraph"), {
 });
 import DevStory from "@/components/DevStory";
 import AdaptiveGreeting from "@/components/AdaptiveGreeting";
-import MagneticCard from "@/components/MagneticCard";
 import SpotlightCursor from "@/components/SpotLight";
 import GlitchButton from "@/components/GlitchButton";
 import FilmIndicator from "@/components/FilmIndicator";
 import LoadingScreen from "@/components/LoadingScreen";
 
+const PROJECTS = [
+  {
+    title: "Auroo Mobile App",
+    category: "Flutter",
+    image: A2,
+    description:
+      "A feature-rich mobile application for seamless audio streaming and discovery, built with Flutter and Dart for cross-platform performance.",
+    tags: ["Flutter", "Dart", "Firebase", "REST API"],
+    githubUrl: "https://github.com/supunyasanthaofficial",
+  },
+  {
+    title: "Portfolio",
+    category: "Next.js",
+    image: P2,
+    description:
+      "A creative developer portfolio with smooth scroll animations, 3D interactions, and a cinematic design language built with Next.js and Framer Motion.",
+    tags: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+    liveUrl: "https://supunyasantha.vercel.app",
+    githubUrl: "https://github.com/supunyasanthaofficial/my-portfolio01",
+  },
+  {
+    title: "Bigger2",
+    category: "Flutter",
+    image: Bigger2,
+    description:
+      "A dynamic mobile platform delivering an engaging user experience with real-time data, clean UI components, and offline-first architecture.",
+    tags: ["Flutter", "Dart", "SQLite", "Provider"],
+    githubUrl: "https://github.com/supunyasanthaofficial",
+  },
+  {
+    title: "Diferencia Globle",
+    category: "React",
+    image: P4,
+    description:
+      "A globally-connected web application that bridges digital experiences across borders, built with React and modern web technologies.",
+    tags: ["React", "Node.js", "MongoDB", "Tailwind"],
+    githubUrl: "https://github.com/supunyasanthaofficial",
+  },
+];
+
 export default function Home() {
   const containerRef = useRef(null);
-  const scrollRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -43,12 +79,6 @@ export default function Home() {
   const textY = useTransform(scrollYProgress, [0, 0.2], ["0%", "100%"]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9]);
-
-  const { scrollYProgress: horizontalProgress } = useScroll({
-    target: scrollRef,
-  });
-
-  const x = useTransform(horizontalProgress, [0, 1], ["0%", "-70%"]);
 
   return (
     <main ref={containerRef} className="relative bg-black text-white">
@@ -115,44 +145,7 @@ export default function Home() {
       </section>
       <DevStory />
       <Skills />
-      <section id="projects" ref={scrollRef} className="relative h-[400vh] bg-neutral-950">
-        <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-          <motion.div style={{ x }} className="flex gap-8 px-8 md:px-20">
-            <div className="flex flex-col justify-center w-[300px] md:w-[400px] shrink-0">
-              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic text-blue-600 leading-none">
-                Featured <br /> Projects
-              </h2>
-              <p className="text-gray-500 mt-6 font-mono text-sm tracking-widest animate-bounce">
-                SCROLL TO EXPLORE →
-              </p>
-            </div>
-
-            <MagneticCard>
-              <ProjectCard
-                title="Auroo Mobile App"
-                category="Flutter"
-                image={A2}
-              />
-            </MagneticCard>
-
-            <MagneticCard>
-              <ProjectCard title="Portfolio" category="Next.js" image={P2} />
-            </MagneticCard>
-
-            <MagneticCard>
-              <ProjectCard title="Bigger2" category="Flutter" image={Bigger2} />
-            </MagneticCard>
-
-            <MagneticCard>
-              <ProjectCard
-                title="Diferencia Globle"
-                category="React"
-                image={P4}
-              />
-            </MagneticCard>
-          </motion.div>
-        </div>
-      </section>
+      <FeaturedProjects projects={PROJECTS} />
 
     
       <section className="relative z-20 min-h-screen bg-black text-white flex flex-col items-center justify-center py-24 px-4">
