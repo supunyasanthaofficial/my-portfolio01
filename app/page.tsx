@@ -23,11 +23,23 @@ const GithubGraph = dynamic(() => import("@/components/GithubGraph"), {
 });
 import DevStory from "@/components/DevStory";
 import AdaptiveGreeting from "@/components/AdaptiveGreeting";
-import CustomCursor from "@/components/Cursor";
 import SpotlightCursor from "@/components/SpotLight";
 import GlitchButton from "@/components/GlitchButton";
 import FilmIndicator from "@/components/FilmIndicator";
 import LoadingScreen from "@/components/LoadingScreen";
+import CommandPalette from "@/components/CommandPalette";
+
+const HeroCanvas3D = dynamic(() => import("@/components/HeroCanvas3D"), {
+  ssr: false,
+  loading: () => null,
+});
+
+const CodePlayground = dynamic(() => import("@/components/CodePlayground"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-96 w-full animate-pulse bg-zinc-900 rounded-3xl" />
+  ),
+});
 
 const PROJECTS = [
   {
@@ -85,13 +97,14 @@ export default function Home() {
     <main ref={containerRef} className="relative bg-black text-white">
       <LoadingScreen />
       <Navbar />
-      <CustomCursor />
+      <CommandPalette />
       <SpotlightCursor />
       <FilmIndicator />
       <section className="relative h-screen flex items-center justify-center overflow-hidden sticky top-0 bg-black">
+        <HeroCanvas3D />
         <motion.div
           style={{ y: textY, opacity: textOpacity, scale: heroScale }}
-          className="text-center z-10 px-4"
+          className="text-center z-10 px-4 pointer-events-none"
         >
           <h1 className="text-[10vw] md:text-[8vw] font-black leading-[0.9] italic uppercase tracking-tighter">
             Supun <br /> Yasantha
@@ -100,7 +113,7 @@ export default function Home() {
             Mobile • Web
           </p>
         </motion.div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse pointer-events-none" />
       </section>
       <div className="flex justify-center px-4">
         <AdaptiveGreeting />
@@ -135,7 +148,7 @@ export default function Home() {
                 <span className="text-blue-600">Full-stack Developer</span> and{" "}
                 <span className="italic"> Editor</span>.
               </p>
-              <div className="mt-12 space-y-8">
+              <div className="mt-10 space-y-6">
                 <p className="text-lg text-gray-600 leading-relaxed">
                   I blend technical precision with creative storytelling in
                   mobile and web apps.
@@ -148,6 +161,7 @@ export default function Home() {
       <DevStory />
       <Skills />
       <FeaturedProjects projects={PROJECTS} />
+      <CodePlayground />
 
     
       <section className="relative z-20 bg-black text-white flex flex-col items-center justify-center py-20 md:py-28 px-4">
