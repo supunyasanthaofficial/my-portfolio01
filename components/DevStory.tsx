@@ -45,6 +45,7 @@ function DevStory() {
 
   return (
     <section
+      id="dev-story"
       ref={containerRef}
       className="py-24 relative bg-zinc-950 text-white"
     >
