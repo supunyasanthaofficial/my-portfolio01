@@ -53,10 +53,31 @@ function Navbar() {
           <button
             type="button"
             suppressHydrationWarning
+            onClick={() => scrollTo("dev-lab")}
+            className="hover:text-blue-400 transition cursor-pointer hidden md:inline"
+          >
+            Lab
+          </button>
+          <button
+            type="button"
+            suppressHydrationWarning
             onClick={() => scrollTo("contact")}
             className="hover:text-blue-400 transition cursor-pointer"
           >
             Contact
+          </button>
+          <button
+            type="button"
+            suppressHydrationWarning
+            onClick={() => {
+              window.dispatchEvent(
+                new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true })
+              );
+            }}
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-neutral-800/80 hover:bg-neutral-700 text-neutral-300 hover:text-white border border-neutral-700/50 transition cursor-pointer text-[11px] font-mono ml-1"
+            title="Search & Quick Actions"
+          >
+            <span>⌘K</span>
           </button>
         </div>
       </div>
