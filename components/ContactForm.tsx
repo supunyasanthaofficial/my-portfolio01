@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -163,4 +164,5 @@ function ContactForm() {
     </section>
   );
 }
+
 export default ContactForm;
