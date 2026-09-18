@@ -5,11 +5,11 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
   try {
-    const apiKey = process.env.RESEND_API_KEY;
+    const apiKey = (process.env.RESEND_API_KEY || "").trim();
     if (!apiKey) {
       console.error("Missing RESEND_API_KEY environment variable.");
       return NextResponse.json(
-        { success: false, error: "Server configuration error: RESEND_API_KEY is missing." },
+        { success: false, error: "Server configuration error: RESEND_API_KEY is missing. Please check .env.local or production environment variables." },
         { status: 500 }
       );
     }
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const recipientEmail = process.env.CONTACT_EMAIL || "supun.yasantha@work.com";
+    const recipientEmail = (process.env.CONTACT_EMAIL || "supunyasantha.official@gmail.com").trim();
 
     const data = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
