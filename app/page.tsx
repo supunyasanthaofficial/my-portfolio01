@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-import sukuna from "../images/sukuna.jpg";
+import Hero2 from "../images/Hero2.png";
 import P2 from "../images/P2.jpg";
 import P4 from "../images/P4.jpg";
 import Bigger2 from "../images/Bigger2.png";
@@ -118,7 +118,10 @@ export default function Home() {
       <div className="flex justify-center px-4">
         <AdaptiveGreeting />
       </div>
-      <section id="about" className="relative z-20 min-h-screen bg-white text-black rounded-t-[50px] px-8 py-32 flex flex-col items-center justify-center">
+      <section
+        id="about"
+        className="relative z-20 min-h-screen bg-white text-black rounded-t-[50px] px-8 py-32 flex flex-col items-center justify-center"
+      >
         <div className="max-w-7xl w-full">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -130,7 +133,7 @@ export default function Home() {
             <div className="flex justify-center md:justify-end">
               <div className="relative group overflow-hidden rounded-full aspect-square bg-gray-100 shadow-2xl w-full max-w-md">
                 <Image
-                  src={sukuna}
+                  src={Hero2}
                   alt="Supun Yasantha"
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-105"
@@ -163,7 +166,6 @@ export default function Home() {
       <FeaturedProjects projects={PROJECTS} />
       <CodePlayground />
 
-    
       <section className="relative z-20 bg-black text-white flex flex-col items-center justify-center py-20 md:py-28 px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -175,13 +177,13 @@ export default function Home() {
           <h2 className="text-5xl md:text-8xl font-black italic tracking-tighter uppercase mb-8 md:mb-10">
             Lets create <br /> <span className="text-blue-500">something.</span>
           </h2>
-          
+
           <div className="flex justify-center">
-             <a href="mailto:supun.yasantha@work.com" className="cursor-pointer">
-                <GlitchButton text="Start a Project" />
-             </a>
+            <a href="mailto:supun.yasantha@work.com" className="cursor-pointer">
+              <GlitchButton text="Start a Project" />
+            </a>
           </div>
-          
+
           <p className="mt-6 text-gray-500 font-mono text-xs md:text-sm uppercase tracking-widest">
             supun.yasantha@work.com
           </p>
