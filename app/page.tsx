@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-import Hero2 from "../images/Hero2.png";
+import Hero2 from "../images/Hero2.png"; // new image
 import P2 from "../images/P2.jpg";
 import P4 from "../images/P4.jpg";
 import Bigger2 from "../images/Bigger2.png";
