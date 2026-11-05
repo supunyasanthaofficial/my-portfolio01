@@ -1,22 +1,24 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, useSpring } from "framer-motion";
+import React, { useEffect } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 function SpotlightCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const mouseX = useMotionValue(-500);
+  const mouseY = useMotionValue(-500);
+
+  const cursorX = useSpring(mouseX, { stiffness: 500, damping: 28 });
+  const cursorY = useSpring(mouseY, { stiffness: 500, damping: 28 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  const cursorX = useSpring(mousePosition.x, { stiffness: 500, damping: 28 });
-  const cursorY = useSpring(mousePosition.y, { stiffness: 500, damping: 28 });
+  }, [mouseX, mouseY]);
 
   return (
     <motion.div
@@ -32,4 +34,5 @@ function SpotlightCursor() {
     />
   );
 }
+
 export default SpotlightCursor;

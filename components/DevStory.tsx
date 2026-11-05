@@ -2,32 +2,7 @@
 
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useRef } from "react";
-
-const storyData = [
-  {
-    year: "2023",
-    title: "The Beginning",
-    description:
-      "Started my journey into the world of programming with C , C# and basic web development.",
-  },
-  {
-    year: "2024",
-    title: "Diving into React",
-    description:
-      "Learned React and Next.js. Built several projects like 'Polygon_Area_Calculator' and computer vision apps.",
-  },
-  {
-    year: "2025",
-    title: "Professional Milestones",
-    description: "Started working on complex Admin Panels (Supabase).",
-  },
-  {
-    year: "2026",
-    title: "Content Creation & Beyond",
-    description:
-      "Launched my gaming YouTube channel and focused on high-end video editing and AI solutions.",
-  },
-];
+import { DEV_STORY } from "@/data/story";
 
 function DevStory() {
   const containerRef = useRef(null);
@@ -66,9 +41,9 @@ function DevStory() {
           />
 
           <div className="space-y-24">
-            {storyData.map((item, index) => (
+            {DEV_STORY.map((item, index) => (
               <div
-                key={index}
+                key={item.year}
                 className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
               >
                 <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-blue-600 rounded-full transform -translate-x-1/2 z-10 border-4 border-zinc-950" />
@@ -98,4 +73,5 @@ function DevStory() {
     </section>
   );
 }
+
 export default DevStory;

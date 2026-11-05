@@ -4,8 +4,9 @@ import { useLanyard } from "use-lanyard";
 import { motion, AnimatePresence } from "framer-motion";
 import { Music, ExternalLink, Disc3 } from "lucide-react";
 import Image from "next/image";
+import { SITE_CONFIG } from "@/data/site-config";
 
-const DISCORD_ID = process.env.NEXT_PUBLIC_DISCORD_ID || "1542099662574456913";
+const DISCORD_ID = SITE_CONFIG.discordId;
 
 export default function SpotifyCard() {
   const { data: presence } = useLanyard(DISCORD_ID as `${bigint}`);

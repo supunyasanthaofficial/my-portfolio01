@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import type { StaticImageData } from "next/image";
 import {
   motion,
   MotionValue,
@@ -12,7 +12,7 @@ import {
 interface ProjectProps {
   title: string;
   category: string;
-  image: StaticImport;
+  image: StaticImageData;
   description?: string;
   tags?: string[];
   liveUrl?: string;

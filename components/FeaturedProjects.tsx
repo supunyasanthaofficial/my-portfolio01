@@ -2,18 +2,8 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import type { Project } from "@/types";
 import ProjectCard from "./ProjectCard";
-
-interface Project {
-  title: string;
-  category: string;
-  image: StaticImport;
-  description: string;
-  tags: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-}
 
 interface FeaturedProjectsProps {
   projects: Project[];

@@ -12,6 +12,7 @@ import {
   CloudMoon,
   MapPin,
 } from "lucide-react";
+import { SITE_CONFIG } from "@/data/site-config";
 
 interface WeatherState {
   temp: number | null;
@@ -33,14 +34,14 @@ export default function LocalTimeWeather() {
     loading: true,
   });
 
-  // Live Sri Lanka (Asia/Colombo) Clock
+  // Live Sri Lanka Clock
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      
-      // Formatter for Sri Lanka Time (GMT+5:30)
+      const { timezone } = SITE_CONFIG.location;
+
       const timeFormatter = new Intl.DateTimeFormat("en-US", {
-        timeZone: "Asia/Colombo",
+        timeZone: timezone,
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
@@ -48,14 +49,14 @@ export default function LocalTimeWeather() {
       });
 
       const dateFormatter = new Intl.DateTimeFormat("en-US", {
-        timeZone: "Asia/Colombo",
+        timeZone: timezone,
         weekday: "short",
         month: "short",
         day: "numeric",
       });
 
       const hourFormatter = new Intl.DateTimeFormat("en-US", {
-        timeZone: "Asia/Colombo",
+        timeZone: timezone,
         hour: "numeric",
         hour12: false,
       });
@@ -72,15 +73,18 @@ export default function LocalTimeWeather() {
     return () => clearInterval(timer);
   }, []);
 
-  // Fetch Live Weather for Kandy, Sri Lanka (Coordinates: 7.2906° N, 80.6337° E)
+  // Fetch Live Weather
   useEffect(() => {
     const fetchWeather = async () => {
       try {
+        const { latitude, longitude, timezone } = SITE_CONFIG.location;
         const res = await fetch(
-          "https://api.open-meteo.com/v1/forecast?latitude=7.2906&longitude=80.6337&current=temperature_2m,is_day,weather_code&timezone=Asia%2FColombo"
+          `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,is_day,weather_code&timezone=${encodeURIComponent(
+            timezone
+          )}`
         );
         const data = await res.json();
-        
+
         if (data && data.current) {
           const code = data.current.weather_code;
           const isDay = data.current.is_day === 1;
@@ -103,49 +107,54 @@ export default function LocalTimeWeather() {
           });
         }
       } catch {
-        // Fallback in case of network issue
-        setWeather({
-          temp: 27,
-          condition: "Clear",
-          isDay: true,
-          code: 0,
+        setWeather((prev) => ({
+          ...prev,
+          condition: "Unavailable",
           loading: false,
-        });
+        }));
       }
     };
 
     fetchWeather();
-    // Refresh weather every 15 minutes
-    const weatherInterval = setInterval(fetchWeather, 15 * 60 * 1000);
-    return () => clearInterval(weatherInterval);
+    const interval = setInterval(fetchWeather, 15 * 60 * 1000);
+    return () => clearInterval(interval);
   }, []);
 
-  // Weather icon selector
   const renderWeatherIcon = () => {
+    if (weather.loading) {
+      return (
+        <span className="w-3.5 h-3.5 rounded-full border border-blue-400 border-t-transparent animate-spin" />
+      );
+    }
+
     const { code, isDay } = weather;
-    if (code === null) return <Sun className="w-4 h-4 text-yellow-400" />;
+    if (code === null) return <Sun className="w-3.5 h-3.5 text-amber-400" />;
 
     if (code === 0) {
       return isDay ? (
-        <Sun className="w-4 h-4 text-amber-400 animate-spin-slow" />
+        <Sun className="w-3.5 h-3.5 text-amber-400" />
       ) : (
-        <Moon className="w-4 h-4 text-blue-300" />
+        <Moon className="w-3.5 h-3.5 text-blue-300" />
       );
     }
     if (code >= 1 && code <= 3) {
       return isDay ? (
-        <CloudSun className="w-4 h-4 text-amber-300" />
+        <CloudSun className="w-3.5 h-3.5 text-amber-300" />
       ) : (
-        <CloudMoon className="w-4 h-4 text-blue-300" />
+        <CloudMoon className="w-3.5 h-3.5 text-blue-200" />
       );
     }
+    if (code >= 45 && code <= 48) {
+      return <Cloud className="w-3.5 h-3.5 text-neutral-400" />;
+    }
     if (code >= 51 && code <= 82) {
-      return <CloudRain className="w-4 h-4 text-blue-400" />;
+      return <CloudRain className="w-3.5 h-3.5 text-blue-400" />;
     }
     if (code >= 95) {
-      return <CloudLightning className="w-4 h-4 text-yellow-400" />;
+      return <CloudLightning className="w-3.5 h-3.5 text-purple-400" />;
     }
-    return <Cloud className="w-4 h-4 text-zinc-300" />;
+
+    return <Sun className="w-3.5 h-3.5 text-amber-400" />;
   };
 
   return (
@@ -155,14 +164,14 @@ export default function LocalTimeWeather() {
       transition={{ duration: 0.5 }}
       className="inline-flex flex-wrap items-center gap-3 px-4 py-2.5 rounded-2xl bg-neutral-900/80 backdrop-blur-md border border-neutral-800 shadow-xl text-neutral-300"
     >
-    
       <div className="flex items-center gap-1.5 text-xs font-mono">
         <MapPin className="w-3.5 h-3.5 text-blue-500" />
-        <span className="text-white font-medium">Kandy, LK</span>
+        <span className="text-white font-medium">
+          {SITE_CONFIG.location.city}, LK
+        </span>
       </div>
 
       <div className="w-px h-3.5 bg-neutral-700 hidden sm:block" />
-
 
       <div className="flex items-center gap-2 text-xs font-mono">
         <span className="text-white font-semibold tabular-nums">
@@ -175,7 +184,6 @@ export default function LocalTimeWeather() {
 
       <div className="w-px h-3.5 bg-neutral-700" />
 
-
       <div className="flex items-center gap-1.5 text-xs font-mono">
         {renderWeatherIcon()}
         <span className="text-white font-medium tabular-nums">
@@ -187,7 +195,6 @@ export default function LocalTimeWeather() {
       </div>
 
       <div className="w-px h-3.5 bg-neutral-700 hidden sm:block" />
-
 
       <div className="flex items-center gap-1.5 text-[11px] font-mono">
         <span
