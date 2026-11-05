@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
   try {
-    // 1. IP Rate Limiting
+    // IP Rate Limiting
     const forwarded = req.headers.get("x-forwarded-for");
     const ip = forwarded ? forwarded.split(",")[0].trim() : "127.0.0.1";
     const rateLimit = checkRateLimit(ip, 5, 10 * 60 * 1000);
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 2. Parse payload safely
+    // Parse payload safely
     let body: { name?: unknown; email?: unknown; message?: unknown; honeypot?: unknown };
     try {
       body = await req.json();
@@ -39,12 +39,12 @@ export async function POST(req: Request) {
 
     const { name, email, message, honeypot } = body;
 
-    // 3. Honeypot check (hidden field to silently deflect bots)
+    //  Honeypot check (hidden field to silently deflect bots)
     if (honeypot) {
       return NextResponse.json({ success: true, message: "Message sent." });
     }
 
-    // 4. Type & emptiness validation
+    // Type & emptiness validation
     if (
       typeof name !== "string" ||
       typeof email !== "string" ||
@@ -59,7 +59,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 5. Length limits
+    //  Length limits
     const trimmedName = name.trim();
     const trimmedEmail = email.trim();
     const trimmedMessage = message.trim();
@@ -78,7 +78,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 6. Email format validation
+    // Email format validation
     if (!isValidEmail(trimmedEmail)) {
       return NextResponse.json(
         { success: false, error: "Please provide a valid email address." },
@@ -86,7 +86,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 7. Check RESEND_API_KEY
+    // Check RESEND_API_KEY
     const apiKey = (process.env.RESEND_API_KEY || "").trim();
     if (!apiKey) {
       console.error("Missing RESEND_API_KEY environment variable.");
@@ -100,7 +100,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 8. Sanitize HTML for email template
+    // Sanitize HTML for email template
     const safeName = escapeHtml(trimmedName);
     const safeEmail = escapeHtml(trimmedEmail);
     const safeMessage = escapeHtml(trimmedMessage);
