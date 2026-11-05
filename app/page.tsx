@@ -4,23 +4,14 @@ import { useRef } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-import Hero2 from "../images/Hero2.png"; // new image
-import P2 from "../images/P2.jpg";
-import P4 from "../images/P4.jpg";
-import Bigger2 from "../images/Bigger2.png";
-import A2 from "../images/A2.png";
+import Hero2 from "@/images/Hero2.png";
+import { PROJECTS } from "@/data/projects";
 
 import Navbar from "@/components/Navbar";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import Skills from "@/components/Skills";
-const GithubGraph = dynamic(() => import("@/components/GithubGraph"), {
-  ssr: false,
-  loading: () => (
-    <div className="h-40 w-full animate-pulse bg-zinc-800 rounded-3xl" />
-  ),
-});
 import DevStory from "@/components/DevStory";
 import AdaptiveGreeting from "@/components/AdaptiveGreeting";
 import SpotlightCursor from "@/components/SpotLight";
@@ -28,6 +19,13 @@ import GlitchButton from "@/components/GlitchButton";
 import FilmIndicator from "@/components/FilmIndicator";
 import LoadingScreen from "@/components/LoadingScreen";
 import CommandPalette from "@/components/CommandPalette";
+
+const GithubGraph = dynamic(() => import("@/components/GithubGraph"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-40 w-full animate-pulse bg-zinc-800 rounded-3xl" />
+  ),
+});
 
 const HeroCanvas3D = dynamic(() => import("@/components/HeroCanvas3D"), {
   ssr: false,
@@ -40,46 +38,6 @@ const CodePlayground = dynamic(() => import("@/components/CodePlayground"), {
     <div className="h-96 w-full animate-pulse bg-zinc-900 rounded-3xl" />
   ),
 });
-
-const PROJECTS = [
-  {
-    title: "Auroo Mobile App",
-    category: "Flutter",
-    image: A2,
-    description:
-      "A feature-rich mobile application for seamless audio streaming and discovery, built with Flutter and Dart for cross-platform performance.",
-    tags: ["Flutter", "Dart", "Firebase", "REST API"],
-    githubUrl: "https://github.com/supunyasanthaofficial",
-  },
-  {
-    title: "Portfolio",
-    category: "Next.js",
-    image: P2,
-    description:
-      "A creative developer portfolio with smooth scroll animations, 3D interactions, and a cinematic design language built with Next.js and Framer Motion.",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
-    liveUrl: "https://supunyasantha.vercel.app",
-    githubUrl: "https://github.com/supunyasanthaofficial/my-portfolio01",
-  },
-  {
-    title: "Bigger2",
-    category: "Flutter",
-    image: Bigger2,
-    description:
-      "A dynamic mobile platform delivering an engaging user experience with real-time data, clean UI components, and offline-first architecture.",
-    tags: ["Flutter", "Dart", "SQLite", "Provider"],
-    githubUrl: "https://github.com/supunyasanthaofficial",
-  },
-  {
-    title: "Diferencia Globle",
-    category: "React",
-    image: P4,
-    description:
-      "A globally-connected web application that bridges digital experiences across borders, built with React and modern web technologies.",
-    tags: ["React", "Node.js", "MongoDB", "Tailwind"],
-    githubUrl: "https://github.com/supunyasanthaofficial",
-  },
-];
 
 export default function Home() {
   const containerRef = useRef(null);

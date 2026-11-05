@@ -15,6 +15,7 @@ import {
   Command as CommandIcon,
   X,
 } from "lucide-react";
+import { SITE_CONFIG } from "@/data/site-config";
 
 interface ActionItem {
   id: string;
@@ -40,7 +41,7 @@ export default function CommandPalette() {
   }, []);
 
   const handleCopyEmail = useCallback(() => {
-    navigator.clipboard.writeText("supun.yasantha@work.com");
+    navigator.clipboard.writeText(SITE_CONFIG.email);
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
@@ -109,7 +110,7 @@ export default function CommandPalette() {
         icon: <ExternalLink className="w-4 h-4 text-neutral-400" />,
         shortcut: "↗",
         action: () => {
-          window.open("https://github.com/supunyasanthaofficial", "_blank");
+          window.open(`https://github.com/${SITE_CONFIG.githubUsername}`, "_blank");
           setIsOpen(false);
         },
       },

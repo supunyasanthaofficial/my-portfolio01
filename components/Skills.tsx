@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import { Globe, LayoutGrid, Sparkles } from "lucide-react";
-import type { TechItem } from "./TechOrbit3D";
-import { TECH_ITEMS } from "./TechOrbit3D";
+import type { TechItem } from "@/types";
+import { TECH_ITEMS, SKILL_CATEGORIES } from "@/data/skills";
 
 const TechOrbit3D = dynamic(() => import("@/components/TechOrbit3D"), {
   ssr: false,
@@ -18,8 +18,6 @@ const TechOrbit3D = dynamic(() => import("@/components/TechOrbit3D"), {
     </div>
   ),
 });
-
-const CATEGORIES = ["All", "Mobile", "Web", "Language", "Database", "Design", "Video"];
 
 export default function Skills() {
   const [viewMode, setViewMode] = useState<"orbit" | "grid">("orbit");
@@ -83,7 +81,7 @@ export default function Skills() {
 
         {/* Category Filters */}
         <div className="flex flex-wrap items-center gap-2 mb-8">
-          {CATEGORIES.map((category) => (
+          {SKILL_CATEGORIES.map((category) => (
             <button
               key={category}
               type="button"

@@ -1,7 +1,13 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useEffect, useState } from "react";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  useMotionValueEvent,
+} from "framer-motion";
+import { useState } from "react";
 
 function FilmIndicator() {
   const { scrollYProgress } = useScroll();
@@ -13,9 +19,11 @@ function FilmIndicator() {
     restDelta: 0.001,
   });
 
-  useEffect(() => {
-    return scrollYProgress.onChange((v) => setPercent(Math.round(v * 100)));
-  }, [scrollYProgress]);
+  const indicatorTop = useTransform(scrollYProgress, [0, 1], ["0%", "90%"]);
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    setPercent(Math.round(latest * 100));
+  });
 
   const holes = Array.from({ length: 15 });
 
@@ -37,7 +45,7 @@ function FilmIndicator() {
           className="absolute left-0 w-full z-20 flex items-center justify-center"
           style={{
             height: "50px",
-            top: useTransform(scrollYProgress, [0, 1], ["0%", "90%"]),
+            top: indicatorTop,
           }}
         >
           <div className="w-full h-full border-y border-blue-400 bg-blue-500/10 relative">
@@ -46,7 +54,7 @@ function FilmIndicator() {
             <div className="absolute bottom-0 left-0 w-1 h-1 border-b border-l border-blue-400" />
             <div className="absolute bottom-0 right-0 w-1 h-1 border-b border-r border-blue-400" />
 
-            <div className="absolute top-1/2 left-0 w-full h-1px bg-blue-400/50 shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
+            <div className="absolute top-1/2 left-0 w-full h-px bg-blue-400/50 shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
           </div>
         </motion.div>
 
@@ -80,9 +88,10 @@ function FilmIndicator() {
         <span className="text-[7px] font-mono text-blue-500/40 tracking-[0.5em] uppercase">
           System_Active
         </span>
-        <div className="h-8 w-1px bg-blue-500/20" />
+        <div className="h-8 w-px bg-blue-500/20" />
       </div>
     </div>
   );
 }
+
 export default FilmIndicator;

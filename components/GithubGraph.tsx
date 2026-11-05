@@ -2,6 +2,7 @@
 
 import { GitHubCalendar } from "react-github-calendar";
 import { motion } from "framer-motion";
+import { SITE_CONFIG } from "@/data/site-config";
 
 function GithubGraph() {
   const themeColors = {
@@ -36,7 +37,7 @@ function GithubGraph() {
         >
           <div className="min-w-fit">
             <GitHubCalendar
-              username="supunyasanthaofficial"
+              username={SITE_CONFIG.githubUsername}
               blockSize={13}
               blockMargin={5}
               fontSize={14}
@@ -49,4 +50,5 @@ function GithubGraph() {
     </section>
   );
 }
+
 export default GithubGraph;

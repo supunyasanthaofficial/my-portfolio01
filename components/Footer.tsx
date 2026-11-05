@@ -1,5 +1,7 @@
 "use client";
+
 import { motion } from "framer-motion";
+import { SOCIAL_LINKS } from "@/data/navigation";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -28,34 +30,17 @@ function Footer() {
           </div>
 
           <div className="flex flex-wrap gap-5 md:gap-8 font-mono text-xs md:text-sm uppercase tracking-widest text-neutral-300">
-            <a
-              href="https://www.linkedin.com/feed/"
-              target="_blank"
-              className="hover:text-blue-400 transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://github.com/supunyasanthaofficial"
-              target="_blank"
-              className="hover:text-blue-400 transition-colors"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              className="hover:text-blue-400 transition-colors"
-            >
-              Instagram
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              className="hover:text-blue-400 transition-colors"
-            >
-              Facebook
-            </a>
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
         </div>
 
@@ -76,4 +61,5 @@ function Footer() {
     </footer>
   );
 }
+
 export default Footer;
